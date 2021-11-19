@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Absence.Model
 {
-    class OTypeAbsence
+    public class OTypeAbsence
     {
 
         public int id;

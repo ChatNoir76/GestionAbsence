@@ -10,13 +10,13 @@ namespace Absence.Model
     {
         public int id;
         public string motif;
-        public DateTime dateDebut;
-        public DateTime dateFin;
+        public string dateDebut;
+        public string dateFin;
         public bool prolongation;
         public int idPersonne;
-        public int idAbsence;
+        public int idTypeAbsence;
 
-        public OAbsence(string motif, DateTime dateDebut, DateTime dateFin, bool prolongation, int idPersonne, int idAbsence, int id = 0)
+        public OAbsence(string motif, string dateDebut, string dateFin, bool prolongation, int idPersonne, int idTypeAbsence, int id = 0)
         {
             this.id = id;
             this.motif = motif;
@@ -24,7 +24,7 @@ namespace Absence.Model
             this.dateFin = dateFin;
             this.prolongation = prolongation;
             this.idPersonne = idPersonne;
-            this.idAbsence = idAbsence;
+            this.idTypeAbsence = idTypeAbsence;
         }
     }
 }

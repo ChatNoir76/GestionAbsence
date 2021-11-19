@@ -25,7 +25,7 @@ namespace Absence.Core
             return new OPersonne(nom, prenom);
         }
 
-        public OAbsence createAbsence(string motif, DateTime dateDebut, DateTime dateFin, bool prolongation, int idPersonne, int idAbsence, int id = 0)
+        public OAbsence createAbsence(string motif, string dateDebut, string dateFin, bool prolongation, int idPersonne, int idAbsence, int id = 0)
         {
             return new OAbsence(motif, dateDebut, dateFin, prolongation, idPersonne, idAbsence);
         }

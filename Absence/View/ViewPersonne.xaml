@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Absence.View"
         mc:Ignorable="d"
-        Title="ViewPersonne" Height="450" Width="800">
+        Title="ViewPersonne" Height="450" Width="300">
     <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Edition">
+                <MenuItem Header="_Nouvelle absence" Click="New_Click_Menu"/>
+            </MenuItem>
+        </Menu>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
@@ -15,20 +20,20 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
-                <RowDefinition Height="25" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Nom"/>
             <TextBox Grid.Row="0" Grid.Column="1" Name="TxtNom"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Prenom"/>
             <TextBox Grid.Row="1" Grid.Column="1" Name="TxtPrenom"/>
-            <Button Grid.Row="2" Click="Ajouter_Button_Click" Content="Ajouter" />
         </Grid>
         <ListView Name="lvAbsence">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}" />
-                    <GridViewColumn Header="Prénom" DisplayMemberBinding="{Binding Prenom}" />
-                    <GridViewColumn Header="Nombre d'absences" DisplayMemberBinding="{Binding AbsenceNombre}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding TypeAbs}" />
+                    <GridViewColumn Header="Motif" DisplayMemberBinding="{Binding Motif}" />
+                    <GridViewColumn Header="Date début" DisplayMemberBinding="{Binding DDebut}" />
+                    <GridViewColumn Header="Date fin" DisplayMemberBinding="{Binding DFin}" />
+                    <GridViewColumn Header="prolongation" DisplayMemberBinding="{Binding Prolongation}" />
                 </GridView>
             </ListView.View>
         </ListView>

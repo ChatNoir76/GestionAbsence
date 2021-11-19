@@ -56,8 +56,8 @@ namespace Absence.Model.DAO
             {
                 try
                 {
-                    if (ParamList.Length > 0){
-                        requete.Parameters.Add(ParamList);
+                    if (ParamList.Length > 0) {
+                        requete.Parameters.AddRange(ParamList);
                     }
                     requete.Prepare();
                     SQLiteDataReader reader = requete.ExecuteReader();

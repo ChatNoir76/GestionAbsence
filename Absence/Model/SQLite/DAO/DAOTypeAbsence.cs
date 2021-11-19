@@ -59,7 +59,7 @@ namespace Absence.Model.SQLite.DAO
 
         public OTypeAbsence GetObjectFromReader(SQLiteDataReader value)
         {
-            return new OTypeAbsence(value.GetString(0), value.GetInt32(1));
+            return new OTypeAbsence(value.GetString(1), value.GetInt32(0));
         }
 
         public void Insert(OTypeAbsence value)
