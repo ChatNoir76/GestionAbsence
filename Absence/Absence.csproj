@@ -80,6 +80,9 @@
     <Compile Include="View\ViewPersonne.xaml.cs">
       <DependentUpon>ViewPersonne.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\VWAbsence.xaml.cs">
+      <DependentUpon>VWAbsence.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +102,10 @@
     <Page Include="View\ViewPersonne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VWAbsence.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

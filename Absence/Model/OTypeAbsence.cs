@@ -12,6 +12,8 @@ namespace Absence.Model
         public int id;
         public string typeAbsence;
 
+        public string TypeAbsence => typeAbsence;
+
         public OTypeAbsence(string typeAbsence, int id = 0)
         {
             this.id = id;

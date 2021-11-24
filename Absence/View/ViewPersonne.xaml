@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Absence.View"
         mc:Ignorable="d"
-        Title="ViewPersonne" Height="450" Width="300">
+        Title="Gestion des Absences" Height="275" Width="450">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Edition">
@@ -22,11 +22,11 @@
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Nom"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Name="TxtNom"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="TxtNom" IsReadOnly="True"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Prenom"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="TxtPrenom"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="TxtPrenom" IsReadOnly="True"/>
         </Grid>
-        <ListView Name="lvAbsence">
+        <ListView Name="lvAbsence" MouseDoubleClick="open_absence_click">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding TypeAbs}" />

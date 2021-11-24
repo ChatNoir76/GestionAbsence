@@ -22,10 +22,16 @@ namespace Absence.View
     /// </summary>
     public partial class ViewPersonne : Window
     {
+        private OPersonne personne;
+
         ObservableCollection<AbsenceViewer> absences = new ObservableCollection<AbsenceViewer>();
         public ViewPersonne(OPersonne personne)
         {
             InitializeComponent();
+            this.personne = personne;
+            this.TxtNom.Text = this.personne.nom;
+            this.TxtPrenom.Text = this.personne.prenom;
+
             List<OAbsence> lsAbsence = DAOFactory.getDAOAbsence().getAllByReference(personne).ToList();
             lsAbsence.ForEach(delegate (OAbsence abs)
             {
@@ -38,10 +44,17 @@ namespace Absence.View
 
         private void New_Click_Menu(object sender, RoutedEventArgs e)
         {
-            ViewListObject item = (ViewListObject)((ListView)sender).SelectedItem;
+            VWAbsence fenetre = new VWAbsence(this.personne, this.absences);
+            fenetre.ShowDialog();
+        }
+
+        private void open_absence_click(object sender, MouseButtonEventArgs e)
+        {
+            AbsenceViewer item = (AbsenceViewer)((ListView)sender).SelectedItem;
             if (item != null)
             {
-                MessageBox.Show("Item's Double Click handled!");
+                VWAbsence fenetre = new VWAbsence(this.personne, this.absences, item);
+                fenetre.ShowDialog();
             }
         }
     }
@@ -50,11 +63,12 @@ namespace Absence.View
         private OAbsence absence;
         private OTypeAbsence typeAbs;
 
+        public int idAbsence => absence.id;
         public string TypeAbs => typeAbs.typeAbsence;
         public string Motif => absence.motif;
         public string DDebut => absence.dateDebut.ToString();
         public string DFin => absence.dateFin.ToString();
-        public string Prolongation => absence.prolongation.ToString();
+        public bool Prolongation => absence.prolongation;
 
         public AbsenceViewer(OAbsence absence, OTypeAbsence type)
         {
