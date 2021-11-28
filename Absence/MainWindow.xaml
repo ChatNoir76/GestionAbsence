@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Absence"
         mc:Ignorable="d"
-        Title="Gestion des absences" Height="450" Width="800">
+        Title="Gestion des absences" Height="450" Width="500">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Fichier">
+                <MenuItem Header="_Actualiser" Click="Menu_Actualiser_Click"/>
+            </MenuItem>
             <MenuItem Header="_Edition">
                 <MenuItem Header="_Nouvel Intérimaire" Click="New_Click_Menu"/>
             </MenuItem>

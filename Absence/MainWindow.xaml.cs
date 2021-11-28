@@ -25,25 +25,33 @@ namespace Absence
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObjectList usersList = new ObjectList();
+        public ObservableCollection<ViewListObject> usersList = new ObservableCollection<ViewListObject>();
 
         public MainWindow()
         {
             InitializeComponent();
 
+            updateAllDatas();
+
+
+        }
+
+        private void updateAllDatas()
+        {
+            usersList.Clear();
             DAOFactory.getDAOPersonne().GetAll().ForEach(p =>
             {
                 usersList.Add(new ViewListObject(p, DAOFactory.getDAOAbsence().getAllByReference(p).ToList()));
             });
 
             lvPersonne.ItemsSource = usersList;
-
         }
+
 
         private void New_Click_Menu(object sender, RoutedEventArgs e)
         {
             NewPersonne fenetre = new View.NewPersonne(usersList);
-            fenetre.Show();
+            fenetre.ShowDialog();
         }
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -52,27 +60,27 @@ namespace Absence
             ViewListObject item = (ViewListObject) ((ListView) sender).SelectedItem;
             if (item != null)
             {
-                MessageBox.Show("Item's Double Click handled!");
+                ViewPersonne fenetre = new ViewPersonne(item.personne);
+                fenetre.ShowDialog();
             }
         }
-    }
-    public class ObjectList : ObservableCollection<ViewListObject>
-    {
 
-        protected override void InsertItem(int index, ViewListObject item)
+        private void Menu_Actualiser_Click(object sender, RoutedEventArgs e)
         {
-            base.InsertItem(index, item);
-            //DAOFactory.getDAOPersonne().Insert(item.personne);
+            updateAllDatas();
         }
     }
+
+    /// <summary>
+    /// Classe permettant l'affichage des données dans la viewlist
+    /// </summary>
     public class ViewListObject
     {
-        private OPersonne personne;
-        private List<OAbsence> absences;
+        public OPersonne personne;
+        public List<OAbsence> absences;
 
         public string Nom => personne.nom;
         public string Prenom => personne.prenom;
-
         public int AbsenceNombre => absences.Count;
 
         public ViewListObject(OPersonne personne, List<OAbsence> absences)

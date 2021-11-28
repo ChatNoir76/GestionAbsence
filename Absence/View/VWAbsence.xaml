@@ -1,0 +1,46 @@
+﻿<Window x:Class="Absence.View.VWAbsence"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Absence.View"
+        mc:Ignorable="d"
+        Title="Visualisation Absence" Height="250" Width="400">
+    <DockPanel>
+        <Grid>
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Type Absence"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" Name="CBTypeAbsence" IsEditable="False">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding TypeAbsence}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Motif"/>
+                <TextBox MinHeight="75" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" Name="TxtMotif"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Date Début"/>
+                <DatePicker MinHeight="25" Grid.Row="2" Grid.Column="1" Name="TxtDateDebut"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Date Fin"/>
+                <DatePicker MinHeight="25" Grid.Row="3" Grid.Column="1" Name="TxtDateFin"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Prolongation?"/>
+                <CheckBox Grid.Row="4" Grid.Column="1" Name="CHKProlongation"/>
+                <Button Grid.Row="5" Grid.Column="1" Width="100" Content="Enregistrer" Click="BT_Enregistrer"/>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>

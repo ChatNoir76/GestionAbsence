@@ -20,5 +20,9 @@ namespace Absence.Model
             this.prenom = prenom;
         }
 
+        public override string ToString()
+        {
+            return this.nom.ToUpper() + " " + this.prenom.ToLower();
+        }
     }
 }

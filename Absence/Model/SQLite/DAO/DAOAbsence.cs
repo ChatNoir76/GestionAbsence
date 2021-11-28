@@ -50,7 +50,7 @@ namespace Absence.Model.SQLite.DAO
             {
                 if (reader != null)
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         liste.Add(GetObjectFromReader(reader));
                     }
@@ -78,7 +78,7 @@ namespace Absence.Model.SQLite.DAO
 
         public OAbsence GetObjectFromReader(SQLiteDataReader value)
         {
-            return new OAbsence(value.GetString(1), value.GetDateTime(2), value.GetDateTime(3), value.GetBoolean(4), value.GetInt32(5), value.GetInt32(6), value.GetInt32(0));
+            return new OAbsence(value.GetString(1), value.GetString(2), value.GetString(3), value.GetBoolean(4), value.GetInt32(5), value.GetInt32(6), value.GetInt32(0));
         }
 
         public void Insert(OAbsence value)
@@ -94,7 +94,7 @@ namespace Absence.Model.SQLite.DAO
             SQLiteParameter p5 = new SQLiteParameter();
             p5.Value = value.idPersonne;
             SQLiteParameter p6 = new SQLiteParameter();
-            p6.Value = value.idAbsence;
+            p6.Value = value.idTypeAbsence;
             value.id = this.ExecuteScalar(R_INSERT, p1, p2, p3, p4, p5, p6);
         }
 
@@ -111,7 +111,7 @@ namespace Absence.Model.SQLite.DAO
             SQLiteParameter p5 = new SQLiteParameter();
             p5.Value = value.idPersonne;
             SQLiteParameter p6 = new SQLiteParameter();
-            p6.Value = value.idAbsence;
+            p6.Value = value.idTypeAbsence;
             SQLiteParameter p7 = new SQLiteParameter();
             p7.Value = value.id;
             this.ExecuteNonQuery(R_UPDATE, p1, p2, p3, p4, p5, p6, p7);

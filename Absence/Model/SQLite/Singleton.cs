@@ -28,7 +28,7 @@ namespace Absence.Model.DAO
         private Singleton()
         {
             SQLiteConnectionStringBuilder strBuilder = new SQLiteConnectionStringBuilder();
-            strBuilder.DataSource = "source/absence.db3";
+            strBuilder.DataSource = "absence.db3";
             strBuilder.Version = 3;
             strBuilder.ForeignKeys = false;
 

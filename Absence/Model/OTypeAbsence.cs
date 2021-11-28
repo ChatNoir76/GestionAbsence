@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Absence.Model
 {
-    class OTypeAbsence
+    public class OTypeAbsence
     {
 
         public int id;
         public string typeAbsence;
+
+        public string TypeAbsence => typeAbsence;
 
         public OTypeAbsence(string typeAbsence, int id = 0)
         {
